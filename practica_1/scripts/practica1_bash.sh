@@ -12,10 +12,12 @@ fi
 
 # Crea carpeta Integrantes y Letras
 mkdir -p Practica1/Letras Practica1/Integrantes
+touch Practica1/Integrantes/FragosoIslasManuelAlfredo.txt
 touch Practica1/Letras/a.txt Practica1/Letras/b.txt Practica1/Letras/c.txt
 touch Practica1/Integrantes/ManzanoCasadoLuisDavid.txt
 touch Practica1/Integrantes/SalinasSanchezMarcela.txt
 touch Practica1/Integrantes/VeraDiazFrancisco.txt
+
 
 # Ejecuta el tree
 echo ""
