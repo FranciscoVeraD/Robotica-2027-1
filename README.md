@@ -12,7 +12,9 @@ Integrantes:
 -Vera Diaz Francisco
 
 
-Actualizado hasta la Practica1.
-
 Práctica1:
 Manejo básico de herramientas
+
+
+
+Actualizado hasta la Practica1.
