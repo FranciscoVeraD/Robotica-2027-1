@@ -17,4 +17,4 @@ Manejo básico de herramientas
 
 
 
-Actualizado hasta la Practica1.
+Actualizado hasta la Practica 2.
