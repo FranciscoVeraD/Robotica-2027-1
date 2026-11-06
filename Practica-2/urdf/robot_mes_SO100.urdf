@@ -1,0 +1,136 @@
+<robot name="SO100">
+<!--Información de eslabones-->
+<link name="Base_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+           <mesh filename="../meshes/Base.STL" scale="1.666 1 1"/>
+        </geometry>
+        <material name="negro">
+            <color rgba="0.0 0.0 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<link name="Shoulder_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 0.0"/>
+        <geometry>
+            <mesh filename="../meshes/Shoulder_Rotation_Pitch.STL" scale="1 1 1"/>
+        </geometry>
+        <material name="rojo">
+            <color rgba="1 0.0 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<link name="Upper_link">
+    <visual>
+        <origin xyz="0.0 0.0 0." rpy="0 -1.57 0"/>
+        <geometry>
+            <mesh filename="../meshes/../meshes/Upper_Arm.STL" scale="1 1 1"/>
+        </geometry>
+        <material name="azul">
+            <color rgba="0.0 0.0 1 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<link name="Lower_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 -1.57 0.0"/>
+        <geometry>
+            <mesh filename="../meshes/../meshes/Lower_Arm.STL" scale="1 1 1"/>
+        </geometry>
+        <material name="verde">
+            <color rgba="0.0 1.0 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<link name="Wrist_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="3.14 1.57 0.0"/>
+        <geometry>
+            <mesh filename="../meshes/Wrist_Pitch_Roll.STL" scale="1 1 1"/>
+        </geometry>
+        <material name="aqua">
+            <color rgba="0 0.25 0.25 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<link name="Gripper_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="1.57 0.0 3.14"/>
+        <geometry>
+            <mesh filename="../meshes/Fixed_Gripper.STL" scale="1 1 1"/>
+        </geometry>
+        <material name="morado">
+            <color rgba="0.5 0.5 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<link name="Jaw_link">
+    <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+            <mesh filename="../meshes/Moving_Jaw.STL" scale="1 1 1"/>
+        </geometry>
+        <material name="naranja">
+            <color rgba="0.75 0.2 0.0 1.0"/>
+        </material>
+    </visual>
+</link>
+
+<!--Información de articulaciones-->
+<joint name="Shoulder_joint" type="revolute">
+    <origin xyz="0.0 -0.045 0.016" rpy="0.0 0.0 0.0"/>
+    <parent link="Base_link"/>
+    <child link="Shoulder_link"/>
+    <axis xyz="0.0 0.0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
+</joint>
+
+<joint name="Upper_joint" type="revolute">
+    <origin xyz="0.0 -0.030813 0.10229" rpy="0.0 1.57 0.0"/>
+    <parent link="Shoulder_link"/>
+    <child link="Upper_link"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
+</joint>
+
+<joint name="Lower_joint" type="revolute">
+    <origin xyz="-0.027777 0.11279 0" rpy="0.0 0.0 0.0"/>
+    <parent link="Upper_link"/>
+    <child link="Lower_link"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
+</joint>
+
+<joint name="Wrist_joint" type="revolute">
+    <origin xyz="-0.13469 0.004987 0" rpy="0.0 0.0 0.0"/>
+    <parent link="Lower_link"/>
+    <child link="Wrist_link"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
+</joint>
+
+<joint name="Gripper_joint" type="revolute">
+    <origin xyz="0.000213 0.0611 -0.000213" rpy="1.57 0 0.0"/>
+    <parent link="Wrist_link"/>
+    <child link="Gripper_link"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
+</joint>
+
+<joint name="Jaw_joint" type="revolute">
+    <origin xyz="0.019987 0 -0.024187" rpy="1.57 0 0.0"/>
+    <parent link="Gripper_link"/>
+    <child link="Jaw_link"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="10.0"/>
+</joint>
+
+</robot>
